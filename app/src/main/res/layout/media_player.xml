@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/player_bg"
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    app:behavior_hideable = "false"
+    app:behavior_peekHeight = "30dp">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/media_header_bg"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            app:srcCompat="@drawable/player_header_icon" />
+
+        <TextView
+            android:id="@+id/player_header_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:text="Record Player"
+            android:textColor="@color/design_default_color_background"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/player_header_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:paddingTop="16dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="16dp"
+            android:text="Not Playing"
+            android:textAlignment="textEnd"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:gravity="center"
+        android:text="File Name"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <ImageButton
+        android:id="@+id/media_play_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@color/colorPrimary"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:srcCompat="@drawable/player_play_btn" />
+
+    <ImageButton
+        android:id="@+id/media_rewind_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/media_play_button"
+        app:layout_constraintEnd_toStartOf="@+id/media_play_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/media_play_button"
+        app:srcCompat="@drawable/player_back_btn" />
+
+    <ImageButton
+        android:id="@+id/media_forward_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/media_play_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/media_play_button"
+        app:layout_constraintTop_toTopOf="@+id/media_play_button"
+        app:srcCompat="@drawable/player_forward_btn" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/media_play_button" />
+</androidx.constraintlayout.widget.ConstraintLayout>
