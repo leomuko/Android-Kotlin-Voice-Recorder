@@ -1,6 +1,8 @@
 package com.example.voicerecordingapp
 
 import android.Manifest
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.pm.PackageManager
 import android.media.MediaRecorder
 import android.os.Bundle
@@ -44,7 +46,22 @@ class RecordFragment : Fragment() {
         navController = Navigation.findNavController(view)
 
         list_button.setOnClickListener {
-            navController!!.navigate(R.id.action_recordFragment_to_audioListFragment)
+            if (isRecording){
+                val alertDialog: AlertDialog.Builder = AlertDialog.Builder(context)
+                alertDialog.setPositiveButton("OKAY", object : DialogInterface.OnClickListener{
+                    override fun onClick(dialog: DialogInterface?, which: Int) {
+                        navController!!.navigate(R.id.action_recordFragment_to_audioListFragment)
+                    }
+
+                })
+                alertDialog.setNegativeButton("CANCEL", null)
+                alertDialog.setTitle("Audio Still Recording")
+                alertDialog.setMessage("Do you want to end audio recording?")
+                alertDialog.create().show()
+            }else{
+                navController!!.navigate(R.id.action_recordFragment_to_audioListFragment)
+            }
+
         }
         record_button.setOnClickListener{
             if (isRecording){
@@ -93,6 +110,7 @@ class RecordFragment : Fragment() {
     }
 
     private fun stopRecording() {
+        isRecording = false
         record_timer.base
         record_timer.stop()
         record_status_text.setText("Recording saved as  ${recordFile}")
@@ -109,6 +127,14 @@ class RecordFragment : Fragment() {
             activity?.let { ActivityCompat.requestPermissions(it, arrayOf(RECORDPERMISSION), PERMISSIONCODE) }
             return false
         }
+    }
+
+    override fun onStop() {
+        if (isRecording){
+            stopRecording()
+        }
+
+        super.onStop()
     }
 
 
